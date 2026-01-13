@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfoo <rfoo@student.42singapore.sg>         +#+  +:+       +#+        */
+/*   By: russ1337 <russ1337@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 19:52:43 by rfoo              #+#    #+#             */
-/*   Updated: 2025/12/18 19:39:30 by rfoo             ###   ########.fr       */
+/*   Updated: 2026/01/14 05:48:40 by russ1337         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,27 @@
 typedef struct entry
 {
 	char	key;
-	void	*value;
+	void	(*handler)(void*);
 }			t_entry;
 
 typedef struct dict
 {
 	int		size;
+	int		count;
 	t_entry	*entries;
 }			t_dict;
 
 int		ft_printf(const char *format, ...);
+void	*ft_memset(void *s, int c, size_t n);
+void	ft_bzero(void *s, size_t n);
+void	*ft_calloc(size_t nmemb, size_t size);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+void	ft_putlowerhex_fd(unsigned int n, int fd);
+void	ft_putupperhex_fd(unsigned int n, int fd);
+
+
 
 void	handle_char(char c);
 void	handle_str(char *s);

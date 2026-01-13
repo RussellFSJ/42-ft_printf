@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dictionary.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfoo <rfoo@student.42singapore.sg>         +#+  +:+       +#+        */
+/*   By: russ1337 <russ1337@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 14:34:24 by rfoo              #+#    #+#             */
-/*   Updated: 2025/12/18 19:39:23 by rfoo             ###   ########.fr       */
+/*   Updated: 2026/01/13 05:28:31 by russ1337         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,39 +17,50 @@ t_dict	*dict_init(int dict_size)
 	t_dict	*printf_dict;
 	t_entry	*entries;
 
-	printf_dict->size = dict_size;
-	entries = malloc(dict_size * sizeof(t_entry));
-	if (!entries)
+	printf_dict = malloc(sizeof(t_dict));
+	if (!printf_dict)
 		return (NULL);
-	dict_fill(printf_dict);
+	printf_dict->size = dict_size;
+	printf_dict->count = 0;
+	printf_dict->entries = ft_calloc(dict_size, sizeof(t_entry));
+	if (!entries)
+	{
+		free(printf_dict);
+		return (NULL);
+	}
+	add_entries(printf_dict);
 	return (printf_dict);
 }
 
-static int	dict_size(char *conversions)
+static int	dict_size(char *keys)
 {
-	return ft_strlen(conversions);
+	return ft_strlen(keys);
 }
 
-static void dict_set(t_dict *dict, char conversion, void (*handler)(void*))
+static void dict_set(t_dict *dict, char key, void (*handler)(void*))
 {
 	int		index;
-	t_entry	*entry;
+	t_entry	entry;
 
 	index = 0;
-	entry->key = conversion;
-	entry->value = handler;
-
+	entry.key = key;
+	entry.handler = handler;
 	while (index < dict->size)
 	{
+		if (dict->entries[index].key == key)
+		{
+			dict->entries[index].handler = handler;
+			return ;
+		}
 		if (!dict->entries[index].key)
 		{
-			dict->entries[index] = *entry;
+			dict->entries[index] = entry;
 			return ;
 		}
 		index++;
 	}
 }
-static void dict_fill(t_dict *dict)
+static void add_entries(t_dict *dict)
 {
 	dict_set(dict, 'c', handle_char);
 	dict_set(dict, 's', handle_str);
@@ -61,15 +72,16 @@ static void dict_fill(t_dict *dict)
 	// dict_set('c', handle_char);
 	// dict_set('c', handle_char);
 }
-void	*dict_get(t_dict *dict, char conversion)
+void	(*dict_get(t_dict *dict, char key))(void *)
 {
 	int	index;
 
 	index = 0;
 	while (index < dict->size)
 	{
-		if (dict->entries[index].key == conversion)
-			return (dict->entries->value);
+		if (dict->entries[index].key == key)
+			return (dict->entries[index].handler);
 		index++;
 	}
+	return (NULL);
 }
