@@ -6,7 +6,7 @@
 /*   By: rfoo <rfoo@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 19:52:43 by rfoo              #+#    #+#             */
-/*   Updated: 2026/01/14 17:49:29 by rfoo             ###   ########.fr       */
+/*   Updated: 2026/01/14 18:27:04 by rfoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putlowerhex_fd(unsigned int n, int fd);
 void	ft_putupperhex_fd(unsigned int n, int fd);
-
-
-
+void	ft_putptr_fd(unsigned int n, int fd);
 void	handle_char(char c);
 void	handle_str(char *s);
 void	handle_int(int n);
 void	handle_ptr(void *ptr);
-// void	handle_uint(unsigned int n);
+void	handle_lowerhex(unsigned int n);
+void	handle_upperhex(unsigned int n);
+void	handle_percent(void);
 
 #endif

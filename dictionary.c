@@ -6,7 +6,7 @@
 /*   By: rfoo <rfoo@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 14:34:24 by rfoo              #+#    #+#             */
-/*   Updated: 2026/01/14 17:48:14 by rfoo             ###   ########.fr       */
+/*   Updated: 2026/01/14 18:12:29 by rfoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ static void add_entries(t_dict *dict)
 	dict_set(dict, 'p', handle_ptr);
 	dict_set(dict, 'd', handle_int);
 	dict_set(dict, 'i', handle_int);
-	// dict_set(dict, 'u', handle_uint)
-
-	// dict_set('c', handle_char);
-	// dict_set('c', handle_char);
+	dict_set(dict, 'u', handle_int);
+	dict_set(dict, 'x', handle_lowerhex);
+	dict_set(dict, 'X', handle_upperhex);
+	dict_set(dict, '%', handle_percent);
 }
 void	(*dict_get(t_dict *dict, char key))(void *)
 {
