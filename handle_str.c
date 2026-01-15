@@ -3,16 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   handle_str.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfoo <rfoo@student.42singapore.sg>         +#+  +:+       +#+        */
+/*   By: russ1337 <russ1337@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 18:55:09 by rfoo              #+#    #+#             */
-/*   Updated: 2026/01/14 19:24:44 by rfoo             ###   ########.fr       */
+/*   Updated: 2026/01/16 06:46:33 by russ1337         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	handle_str(char *s)
+int	handle_str(char *s)
 {
-	ft_putstr_fd(s, 1);
+	int	count;
+
+	count = 0;
+	if (!s)
+		return (count);
+	while (*s)
+	{
+		count += handle_char(*s);
+		s++;
+	}
+	return (count);
 }
