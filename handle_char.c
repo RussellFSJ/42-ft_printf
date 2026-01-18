@@ -6,13 +6,16 @@
 /*   By: russ1337 <russ1337@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 18:45:30 by rfoo              #+#    #+#             */
-/*   Updated: 2026/01/16 03:56:49 by russ1337         ###   ########.fr       */
+/*   Updated: 2026/01/19 02:42:47 by russ1337         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	handle_char(char c)
+int	handle_char(va_list *args)
 {
+	char	c;
+
+	c = (char)va_arg(*args, int);
 	return (write(1, &c, 1));
 }
