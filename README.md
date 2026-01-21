@@ -76,17 +76,26 @@ We first implement a main.c function to test `ft_printf`.
 
 #### main.c
 ```
+#include <stdio.h>
+#include <limits.h>
 #include "ft_printf.h"
 
 int main(void)
 {
-    ft_printf("Hello %s!\n", "world");
+	printf("%d\n", ft_printf(NULL));
+	printf("%d\n", printf(NULL));
+	
+	printf("%d\n", ft_printf(0));
+	printf("%d\n", printf(0));
+
     ft_printf("Character: %c\n", 'A');
+    ft_printf("Hello %s!\n", "world");
+    ft_printf("Pointer: %p\n", (void *)&main);
     ft_printf("Decimal: %d\n", 42);
+	ft_printf("Integer: %i\n", 42);
     ft_printf("Unsigned: %u\n", 3000000000u);
     ft_printf("Hex lowercase: %x\n", 255);
     ft_printf("Hex uppercase: %X\n", 255);
-    ft_printf("Pointer: %p\n", (void *)&main);
     ft_printf("Percent sign: %%\n");
     ft_printf("Trailing percent sign: %\n", "percent sign");
     ft_printf("Unknown specifier: %b\n", "unknown specifier");
