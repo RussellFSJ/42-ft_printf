@@ -6,7 +6,7 @@
 /*   By: rfoo <rfoo@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 11:58:48 by rfoo              #+#    #+#             */
-/*   Updated: 2026/01/21 21:44:25 by rfoo             ###   ########.fr       */
+/*   Updated: 2026/01/21 21:46:17 by rfoo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,3 @@ static int	use_handler(char s, t_dict *dict, va_list *args)
 		return (handler(args));
 	return (write(1, "%", 1) + write(1, &s, 1));
 }
-
